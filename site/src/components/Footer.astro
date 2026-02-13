@@ -1,0 +1,92 @@
+---
+import { siteConfig } from '../data/site';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="border-t border-white/10">
+  <div class="container py-16">
+    <!-- Big Name -->
+    <div class="mb-12">
+      <h2 class="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter">
+        DANI DÍAZ
+      </h2>
+      <p class="text-lg text-gray-400 mt-2">International Casting Director</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8 mb-12">
+      <!-- Contact -->
+      <div>
+        <h3 class="text-sm uppercase tracking-wider text-gray-400 mb-4">Contact</h3>
+        <a href="/contact" class="btn btn-outline text-sm">
+          Get In Touch
+        </a>
+      </div>
+
+      <!-- Work -->
+      <div>
+        <h3 class="text-sm uppercase tracking-wider text-gray-400 mb-4">Work</h3>
+        <ul class="space-y-2">
+          <li>
+            <a href="/work/fiction" class="text-sm hover:text-purple-400 transition-colors">
+              Fiction
+            </a>
+          </li>
+          <li>
+            <a href="/work/ads" class="text-sm hover:text-purple-400 transition-colors">
+              Ads & Fashion Films
+            </a>
+          </li>
+          <li>
+            <a href="/work/music-videos" class="text-sm hover:text-purple-400 transition-colors">
+              Music Videos
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Social -->
+      <div>
+        <h3 class="text-sm uppercase tracking-wider text-gray-400 mb-4">Follow</h3>
+        <ul class="space-y-2">
+          <li>
+            <a
+              href={siteConfig.social.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-sm hover:text-purple-400 transition-colors"
+            >
+              Instagram
+            </a>
+          </li>
+          <li>
+            <a
+              href={siteConfig.social.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-sm hover:text-purple-400 transition-colors"
+            >
+              LinkedIn
+            </a>
+          </li>
+          <li>
+            <a
+              href={siteConfig.social.imdb}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-sm hover:text-purple-400 transition-colors"
+            >
+              IMDb
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom -->
+    <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
+      <p>&copy; {currentYear} Dani Díaz. All rights reserved.</p>
+      <p>Based in Spain. Working internationally.</p>
+    </div>
+  </div>
+</footer>

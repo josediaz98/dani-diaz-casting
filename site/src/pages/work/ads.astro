@@ -1,0 +1,76 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { adsProjects, getFeaturedProjects } from '../../data/projects';
+
+// Get featured projects for top section
+const featuredProjects = getFeaturedProjects().slice(0, 4);
+
+// Get all projects for grid (first 6 for MVP)
+const allProjects = adsProjects.slice(0, 6);
+---
+
+<Layout
+  title="Ads & Fashion Films"
+  description="Advertising and fashion film casting by Dani Díaz. Campaigns for brands like Decathlon, Montana Colors, KOI Vodka, and more."
+>
+  <div class="pt-24 pb-8">
+    <div class="container">
+      <!-- Header -->
+      <header class="max-w-3xl mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">Ads & Fashion Films</h1>
+        <p class="text-lg text-gray-300 leading-relaxed">
+          Campaigns that connect feel real. I cast for advertising projects across <strong>Europe and Latin America</strong>, finding talent with presence, attitude, and on-camera credibility. I've worked with brands like <strong>Decathlon, Montana Colors, KOI Vodka, El Lobo, Oxford Generation</strong>, and more—always prioritizing diversity and the perfect fit for each brand's identity.
+        </p>
+      </header>
+
+      <!-- Featured Projects -->
+      {featuredProjects.length > 0 && (
+        <section class="mb-16">
+          <h2 class="text-xl font-semibold text-gray-400 uppercase tracking-wider mb-6">
+            Featured
+          </h2>
+          <div class="grid md:grid-cols-2 gap-6">
+            {featuredProjects.map((project) => (
+              <ProjectCard project={project} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      <!-- All Projects -->
+      <section>
+        <h2 class="text-xl font-semibold text-gray-400 uppercase tracking-wider mb-6">
+          All Projects
+        </h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {allProjects.map((project) => (
+            <ProjectCard project={project} />
+          ))}
+        </div>
+      </section>
+
+      <!-- Note about more projects -->
+      {adsProjects.length > 6 && (
+        <p class="text-center text-gray-500 mt-12">
+          Showing 6 of {adsProjects.length} projects
+        </p>
+      )}
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <section class="section border-t border-white/10">
+    <div class="container text-center">
+      <h2 class="text-2xl md:text-3xl font-bold mb-4">
+        Planning an ad campaign?
+      </h2>
+      <p class="text-gray-400 mb-6">
+        Let's find talent that connects with your audience.
+      </p>
+      <a href="/contact" class="btn btn-primary">
+        Get In Touch
+      </a>
+    </div>
+  </section>
+</Layout>

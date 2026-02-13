@@ -1,0 +1,60 @@
+---
+import type { Project } from '../data/projects';
+
+interface Props {
+  project: Project;
+  showVideo?: boolean;
+}
+
+const { project, showVideo = false } = Astro.props;
+
+const hasVideo = project.videoUrl && project.videoUrl.length > 0;
+---
+
+<article class="card group">
+  <!-- Thumbnail -->
+  <div class="img-hover aspect-video bg-gray-900 relative">
+    {project.thumbnail ? (
+      <img
+        src={project.thumbnail}
+        alt={project.title}
+        class="w-full h-full object-cover"
+        loading="lazy"
+      />
+    ) : (
+      <div class="w-full h-full flex items-center justify-center text-gray-600">
+        <span class="text-sm">Image coming soon</span>
+      </div>
+    )}
+
+    {/* Play button overlay */}
+    {hasVideo && (
+      <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/50">
+        <div class="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center">
+          <svg class="w-6 h-6 text-black ml-1" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        </div>
+      </div>
+    )}
+  </div>
+
+  <!-- Info -->
+  <div class="p-4">
+    <h3 class="text-lg font-semibold mb-1">{project.title}</h3>
+
+    <div class="text-sm text-gray-400 mb-2">
+      {project.artist && (
+        <span class="block">{project.artist}</span>
+      )}
+      <span>Dir. {project.director}</span>
+      {project.year && <span> • {project.year}</span>}
+    </div>
+
+    {project.description && (
+      <p class="text-sm text-gray-300 line-clamp-3">
+        {project.description}
+      </p>
+    )}
+  </div>
+</article>

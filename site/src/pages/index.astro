@@ -1,0 +1,123 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { siteConfig, heroContent, categories } from '../data/site';
+import { getFeaturedProjects } from '../data/projects';
+
+const featuredProjects = getFeaturedProjects();
+---
+
+<Layout title="Home">
+  <!-- Hero Section with Stats -->
+  <section class="min-h-screen flex items-center justify-center pt-20">
+    <div class="container text-center">
+      <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-4">
+        {heroContent.title}
+      </h1>
+      <p class="text-xl md:text-2xl text-gray-400 uppercase tracking-widest mb-6">
+        {heroContent.subtitle}
+      </p>
+
+      <!-- Stats moved above fold -->
+      <div class="flex justify-center items-center gap-8 mb-8">
+        <div class="text-center">
+          <p class="text-3xl md:text-4xl font-bold text-purple-400">
+            {siteConfig.stats.castingsCompleted}
+          </p>
+          <p class="text-sm text-gray-400 uppercase tracking-wider">Castings</p>
+        </div>
+        <div class="w-px h-12 bg-white/20"></div>
+        <div class="text-center">
+          <p class="text-3xl md:text-4xl font-bold text-purple-400">
+            {categories[0].count}
+          </p>
+          <p class="text-sm text-gray-400 uppercase tracking-wider">Fiction</p>
+        </div>
+        <div class="w-px h-12 bg-white/20"></div>
+        <div class="text-center">
+          <p class="text-3xl md:text-4xl font-bold text-purple-400">
+            {categories[1].count}
+          </p>
+          <p class="text-sm text-gray-400 uppercase tracking-wider">Ads</p>
+        </div>
+      </div>
+
+      <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-8">
+        {heroContent.tagline}
+      </p>
+      <a href="/contact" class="btn btn-primary">
+        {heroContent.cta}
+      </a>
+    </div>
+  </section>
+
+  <!-- Featured Projects Section (replaces video reel) -->
+  <section class="section">
+    <div class="container">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Featured Work</h2>
+      <p class="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
+        Recent campaigns showcasing authentic talent and creative vision
+      </p>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {featuredProjects.map((project) => (
+          <ProjectCard project={project} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- My Work Section -->
+  <section class="section">
+    <div class="container">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">My Work</h2>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {categories.map((category) => (
+          <a href={category.href} class="card group p-8 text-center">
+            <span class="text-4xl font-bold text-purple-400 block mb-2">{category.count}</span>
+            <h3 class="text-xl font-semibold mb-2">{category.title}</h3>
+            <p class="text-gray-400 text-sm mb-4">{category.description}</p>
+            <span class="text-sm uppercase tracking-wider text-purple-400 group-hover:underline">
+              View Work
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- About Preview -->
+  <section class="section bg-white/5">
+    <div class="container">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">About</h2>
+        <p class="text-lg text-gray-300 mb-8">
+          I am a Peruvian Casting Director with more than 12 years of experience leading projects across Latin America and Europe. I specialize in discovering authentic talent and creating inclusive, human-centered casting methodologies.
+        </p>
+        <a href="/about" class="btn btn-outline">
+          Learn More
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section">
+    <div class="container text-center">
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+        Let's Cast It
+      </h2>
+      <p class="text-lg text-gray-300 max-w-2xl mx-auto mb-8">
+        {heroContent.description}
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contact" class="btn btn-primary">
+          Get In Touch
+        </a>
+        <a href={siteConfig.talentFormUrl} target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+          Join My Database
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

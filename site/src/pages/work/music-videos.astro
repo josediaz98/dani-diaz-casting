@@ -1,0 +1,54 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { musicVideoProjects } from '../../data/projects';
+
+// Get first 6 projects for MVP
+const projects = musicVideoProjects.slice(0, 6);
+---
+
+<Layout
+  title="Music Videos"
+  description="Music video casting by Dani Díaz. Projects with artists like Alex Ubago, Nia Correia & Guaynaa, La Blackie, Cora Novoa, and more."
+>
+  <div class="pt-24 pb-8">
+    <div class="container">
+      <!-- Header -->
+      <header class="max-w-3xl mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">Music Videos</h1>
+        <p class="text-lg text-gray-300 leading-relaxed">
+          In music videos, every face shapes the visual world. I've worked on <strong>30+ projects</strong> across different genres, creating castings that elevate the energy and aesthetic of each piece. Credits include artists such as <strong>Alex Ubago & Seye, Nia Correia & Guaynaa, La Blackie, Cora Novoa</strong>, among others.
+        </p>
+      </header>
+
+      <!-- Projects Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {projects.map((project) => (
+          <ProjectCard project={project} />
+        ))}
+      </div>
+
+      <!-- Note about more projects -->
+      {musicVideoProjects.length > 6 && (
+        <p class="text-center text-gray-500 mt-12">
+          Showing 6 of {musicVideoProjects.length} projects
+        </p>
+      )}
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <section class="section border-t border-white/10">
+    <div class="container text-center">
+      <h2 class="text-2xl md:text-3xl font-bold mb-4">
+        Planning a music video?
+      </h2>
+      <p class="text-gray-400 mb-6">
+        Let's create a visual world with the right faces.
+      </p>
+      <a href="/contact" class="btn btn-primary">
+        Get In Touch
+      </a>
+    </div>
+  </section>
+</Layout>
