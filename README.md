@@ -57,19 +57,32 @@ Portfolio profesional para Dani Díaz, director de cine y creador audiovisual.
 ## Estructura del Proyecto
 
 ```
-├── client/          # Frontend React
+├── client/              # Frontend React
 │   ├── src/
 │   │   ├── components/
-│   │   ├── pages/
+│   │   │   ├── sections/   # Secciones de páginas (Hero, CTA, etc.)
+│   │   │   └── ui/         # Componentes UI (shadcn)
+│   │   ├── config/         # Configuración (constants, animations)
+│   │   ├── data/           # Datos centralizados (projects, testimonials)
 │   │   ├── hooks/
-│   │   └── lib/
+│   │   ├── lib/
+│   │   └── pages/
 │   └── public/
-├── server/          # Backend Express
-├── shared/          # Código compartido
-├── script/          # Scripts de build
-├── docs/            # Documentación del proyecto
-└── content/         # Contenido markdown
+├── server/              # Backend Express
+├── shared/              # Código compartido
+├── script/              # Scripts de build
+└── docs/                # Documentación del proyecto
 ```
+
+## Arquitectura
+
+El proyecto sigue una arquitectura modular:
+
+- **Secciones**: Componentes de página reutilizables en `components/sections/`
+- **UI**: Componentes de shadcn/ui en `components/ui/`
+- **Configuración**: Animaciones y constantes centralizadas en `config/`
+- **Datos**: Contenido estructurado (proyectos, testimonios) en `data/`
+- **API**: Endpoint de contacto en `/api/contact`
 
 ## Documentación
 
