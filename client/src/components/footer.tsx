@@ -1,8 +1,9 @@
-import { Instagram, Linkedin, Clapperboard, ArrowUpRight, ArrowUp } from "lucide-react";
+import { ArrowUpRight, ArrowUp } from "lucide-react";
 import { Link } from "wouter";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { Magnetic } from "./ui/magnetic";
 import { useState, useEffect } from "react";
+import { TIMEZONE, SOCIAL_URLS } from "@/config/constants";
 
 function LiveClock() {
   const [time, setTime] = useState(new Date());
@@ -16,7 +17,7 @@ function LiveClock() {
     <div className="flex flex-col">
       <span className="text-gray-500 uppercase tracking-widest text-xs mb-1">Madrid, Spain</span>
       <span className="text-white font-mono text-sm">
-        {time.toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Madrid' })} CET
+        {time.toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', timeZone: TIMEZONE })} CET
       </span>
     </div>
   );
@@ -83,9 +84,9 @@ export function Footer() {
           </div>
           <div className="flex flex-col gap-3">
              <span className="text-white font-bold mb-1">Socials</span>
-             <a href="#" className="hover:text-purple-400 transition-colors">Instagram</a>
-             <a href="#" className="hover:text-purple-400 transition-colors">LinkedIn</a>
-             <a href="#" className="hover:text-purple-400 transition-colors">IMDb</a>
+             <a href={SOCIAL_URLS.instagram} className="hover:text-purple-400 transition-colors">Instagram</a>
+             <a href={SOCIAL_URLS.linkedin} className="hover:text-purple-400 transition-colors">LinkedIn</a>
+             <a href={SOCIAL_URLS.imdb} className="hover:text-purple-400 transition-colors">IMDb</a>
           </div>
         </div>
 

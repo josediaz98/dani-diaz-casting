@@ -1,8 +1,7 @@
-import { Link, useLocation } from "wouter";
+import { Link } from "wouter";
 import { cn } from "@/lib/utils";
-import { Menu, X } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
-import { Button } from "@/components/ui/button";
+import { Menu } from "lucide-react";
+import { useState, useEffect } from "react";
 import { CustomCursor } from "@/components/ui/custom-cursor";
 import { GrainOverlay } from "@/components/ui/grain-overlay";
 import { SmoothScroll } from "@/components/ui/smooth-scroll";
@@ -11,6 +10,7 @@ import { Magnetic } from "@/components/ui/magnetic";
 import { Preloader } from "@/components/ui/preloader";
 import { MenuOverlay } from "@/components/ui/menu-overlay";
 import { Footer } from "@/components/footer";
+import { SCROLL_THRESHOLD } from "@/config/constants";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -19,7 +19,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > SCROLL_THRESHOLD);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
