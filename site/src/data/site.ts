@@ -14,6 +14,9 @@ export const siteConfig = {
 
   stats: {
     castingsCompleted: "100+",
+    yearsExperience: "12+",
+    languages: "3",
+    continents: "2",
   },
 
   // Placeholder for reel URL - to be replaced with actual Vimeo/YouTube URL

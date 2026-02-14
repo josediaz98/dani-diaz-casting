@@ -20,7 +20,7 @@ const fullTitle = title === "Home" ? "Dani Díaz | International Casting Directo
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="lenis lenis-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -55,6 +55,36 @@ const fullTitle = title === "Home" ? "Dani Díaz | International Casting Directo
     <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://player.vimeo.com" />
+    <link rel="dns-prefetch" href="https://www.youtube.com" />
+
+    <!-- Google Fonts: Playfair Display (display) + Inter (body) -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Dani Díaz",
+      "jobTitle": "International Casting Director",
+      "description": "International Casting Director for Film, Advertising & Music Videos. Based in Spain, working across Europe and Latin America.",
+      "url": "https://danidiazcasting.com",
+      "sameAs": [
+        "https://www.instagram.com/danidiazve/",
+        "https://www.linkedin.com/in/danidiazcasting/",
+        "https://www.imdb.com/es-es/name/nm15817888/"
+      ],
+      "knowsLanguage": ["Spanish", "English", "Catalan"],
+      "workLocation": {
+        "@type": "Place",
+        "name": "Spain"
+      }
+    }
+    </script>
+
+    <!-- View Transitions API -->
+    <meta name="view-transition" content="same-origin" />
 
     <!-- Generator -->
     <meta name="generator" content={Astro.generator} />
@@ -65,5 +95,67 @@ const fullTitle = title === "Home" ? "Dani Díaz | International Casting Directo
       <slot />
     </main>
     <Footer />
+
+    <!-- Smooth Scroll with Lenis -->
+    <script>
+      import Lenis from 'lenis';
+
+      // Check for reduced motion preference
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (!prefersReducedMotion) {
+        const lenis = new Lenis({
+          duration: 1.2,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          smoothWheel: true,
+          touchMultiplier: 2,
+        });
+
+        function raf(time: number) {
+          lenis.raf(time);
+          requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+      }
+    </script>
+
+    <!-- Scroll Reveal Animation -->
+    <script>
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (!prefersReducedMotion) {
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: '50px',
+        };
+
+        const revealObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed');
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        }, observerOptions);
+
+        // Observe all elements with .reveal class
+        document.querySelectorAll('.reveal').forEach((el) => {
+          revealObserver.observe(el);
+        });
+
+        // Stagger animation for grid items
+        document.querySelectorAll('.stagger-grid').forEach((grid) => {
+          const items = grid.querySelectorAll('.stagger-item');
+          items.forEach((item, index) => {
+            (item as HTMLElement).style.transitionDelay = `${index * 0.1}s`;
+          });
+        });
+      } else {
+        // If reduced motion, show all elements immediately
+        document.querySelectorAll('.reveal').forEach((el) => {
+          el.classList.add('revealed');
+        });
+      }
+    </script>
   </body>
 </html>
