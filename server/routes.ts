@@ -6,6 +6,7 @@ import { z } from "zod";
 const contactSchema = z.object({
   name: z.string().min(2, { message: "Name is required." }),
   email: z.string().email({ message: "Invalid email address." }),
+  company: z.string().optional(),
   projectType: z.string({ required_error: "Please select a project type." }),
   message: z.string().min(10, { message: "Message must be at least 10 characters." }),
 });
@@ -28,12 +29,13 @@ export async function registerRoutes(
         });
       }
 
-      const { name, email, projectType, message } = result.data;
+      const { name, email, company, projectType, message } = result.data;
 
       // Log the contact submission (in production, you'd send an email or store in DB)
       console.log("Contact form submission:", {
         name,
         email,
+        company,
         projectType,
         message,
         timestamp: new Date().toISOString(),

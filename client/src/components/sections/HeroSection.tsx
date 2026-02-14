@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Link } from "wouter";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { TextReveal } from "@/components/ui/text-reveal";
 import { Magnetic } from "@/components/ui/magnetic";
@@ -8,6 +9,7 @@ import { EXTERNAL_LINKS } from "@/config/constants";
 import heroBg from "@/assets/images/hero-bg.jpg";
 
 export function HeroSection() {
+  const { t } = useTranslation();
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -40,14 +42,14 @@ export function HeroSection() {
       >
         <div>
           <h1 className="text-6xl md:text-8xl lg:text-9xl font-serif font-bold text-white tracking-tight mb-2">
-            <TextReveal text="DANI DÍAZ" />
+            <TextReveal text={t("hero.title")} />
           </h1>
           <p className="text-xl md:text-2xl uppercase tracking-[0.2em] text-gray-400 font-light mb-6">
-            International Casting Director
+            {t("hero.subtitle")}
           </p>
           <p className="text-lg text-gray-300 italic font-serif max-w-2xl mx-auto mb-10">
             <TextReveal
-              text="Find the faces your story needs."
+              text={t("hero.tagline")}
               delay={0.5}
               duration={0.6}
               className="text-lg"
@@ -67,7 +69,7 @@ export function HeroSection() {
                 size="lg"
                 className="bg-primary hover:bg-primary-light text-white uppercase tracking-widest text-xs h-12 px-8 rounded-none transition-transform"
               >
-                View My Work
+                {t("common.viewWork")}
               </Button>
             </Magnetic>
           </Link>
@@ -82,7 +84,7 @@ export function HeroSection() {
                 size="lg"
                 className="border-white/30 text-white hover:bg-white/10 hover:text-white uppercase tracking-widest text-xs h-12 px-8 rounded-none transition-transform"
               >
-                Join Talent Pool
+                {t("common.joinTalentPool")}
               </Button>
             </Magnetic>
           </a>
@@ -95,7 +97,7 @@ export function HeroSection() {
         animate={{ y: [0, 10, 0] }}
         transition={{ repeat: Infinity, duration: 2 }}
       >
-        <span className="text-xs uppercase tracking-widest">Scroll</span>
+        <span className="text-xs uppercase tracking-widest">{t("common.scroll")}</span>
       </motion.div>
     </section>
   );

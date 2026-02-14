@@ -5,8 +5,11 @@ import { ProjectCard } from "@/components/project-card";
 import { Spotlight } from "@/components/ui/spotlight";
 import { Magnetic } from "@/components/ui/magnetic";
 import { featuredWork } from "@/data/projects";
+import { useTranslation } from "react-i18next";
 
 export function FeaturedWorkSection() {
+  const { t } = useTranslation();
+
   return (
     <section className="bg-white/5 py-24 relative overflow-hidden">
       <Spotlight className="absolute inset-0 z-0 pointer-events-none" />
@@ -14,10 +17,10 @@ export function FeaturedWorkSection() {
         <div className="flex flex-col md:flex-row justify-between items-end mb-12">
           <div>
             <h2 className="text-4xl md:text-5xl font-serif text-white mb-4">
-              Featured Work
+              {t("featured.title")}
             </h2>
             <p className="text-gray-400 max-w-xl">
-              Recent campaigns showcasing authentic talent and creative vision.
+              {t("featured.description")}
             </p>
           </div>
           <Link href="/work/fiction">
@@ -26,7 +29,7 @@ export function FeaturedWorkSection() {
                 variant="link"
                 className="text-purple-400 hover:text-white p-0 h-auto mt-4 md:mt-0"
               >
-                View All Projects <ArrowRight className="ml-2 w-4 h-4" />
+                {t("common.viewAllProjects")} <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </Magnetic>
           </Link>

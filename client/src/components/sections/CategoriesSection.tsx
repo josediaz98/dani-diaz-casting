@@ -2,8 +2,11 @@ import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { ArrowRight } from "lucide-react";
 import { categoryCards } from "@/data/projects";
+import { useTranslation } from "react-i18next";
 
 export function CategoriesSection() {
+  const { t } = useTranslation();
+
   return (
     <section className="container mx-auto px-6 py-20">
       <div className="grid md:grid-cols-3 gap-6">
@@ -32,7 +35,7 @@ export function CategoriesSection() {
                   {cat.desc}
                 </p>
                 <div className="mt-6 flex items-center text-xs uppercase tracking-widest text-white/70 group-hover:text-purple-400 transition-colors">
-                  Explore <ArrowRight className="w-4 h-4 ml-2" />
+                  {t("common.explore")} <ArrowRight className="w-4 h-4 ml-2" />
                 </div>
               </div>
             </motion.div>

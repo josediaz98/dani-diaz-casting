@@ -7,6 +7,7 @@ import {
   HeroSection,
   CategoriesSection,
   FeaturedWorkSection,
+  InProductionSection,
   AboutPreviewSection,
   CTASection,
 } from "@/components/sections";
@@ -24,6 +25,9 @@ export default function Home() {
           <StatsGrid />
         </div>
       </section>
+
+      {/* In Production Section */}
+      <InProductionSection />
 
       {/* Categories Section */}
       <CategoriesSection />

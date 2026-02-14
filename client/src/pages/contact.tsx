@@ -23,7 +23,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { fadeInLeft, fadeInRight, withDelay } from "@/config/animations";
 import {
   SOCIAL_URLS,
@@ -31,24 +31,33 @@ import {
   API_ENDPOINTS,
   EXTERNAL_LINKS,
 } from "@/config/constants";
-
-const formSchema = z.object({
-  name: z.string().min(2, { message: "Name is required." }),
-  email: z.string().email({ message: "Invalid email address." }),
-  projectType: z.string({ required_error: "Please select a project type." }),
-  message: z
-    .string()
-    .min(10, { message: "Message must be at least 10 characters." }),
-});
+import { useTranslation } from "react-i18next";
 
 export default function Contact() {
+  const { t } = useTranslation();
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const formSchema = useMemo(
+    () =>
+      z.object({
+        name: z.string().min(2, { message: t("contact.validation.nameRequired") }),
+        email: z.string().email({ message: t("contact.validation.invalidEmail") }),
+        company: z.string().optional(),
+        projectType: z.string({ required_error: t("contact.validation.selectProjectType") }),
+        message: z
+          .string()
+          .min(10, { message: t("contact.validation.messageMinLength") }),
+      }),
+    [t]
+  );
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
       email: "",
+      company: "",
       message: "",
     },
   });
@@ -68,21 +77,21 @@ export default function Contact() {
 
       if (response.ok && data.success) {
         toast({
-          title: "Message Sent",
+          title: t("contact.toast.successTitle"),
           description: data.message,
         });
         form.reset();
       } else {
         toast({
-          title: "Error",
-          description: data.message || "Something went wrong. Please try again.",
+          title: t("contact.toast.errorTitle"),
+          description: data.message || t("contact.toast.errorMessage"),
           variant: "destructive",
         });
       }
     } catch {
       toast({
-        title: "Error",
-        description: "Failed to send message. Please try again later.",
+        title: t("contact.toast.errorTitle"),
+        description: t("contact.toast.errorMessage"),
         variant: "destructive",
       });
     } finally {
@@ -98,19 +107,17 @@ export default function Contact() {
             {/* Left Column: Info */}
             <motion.div {...fadeInLeft}>
               <h1 className="text-5xl md:text-7xl font-serif text-white mb-8">
-                Let's Work Together
+                {t("contact.title")}
               </h1>
               <p className="text-gray-400 text-lg mb-12 leading-relaxed">
-                Whether you're looking for the perfect cast for your next
-                feature film, commercial, or music video, I'm here to help you
-                find the faces that tell your story.
+                {t("contact.description")}
               </p>
 
               <div className="space-y-8 mb-16">
                 <div className="flex items-start gap-4">
                   <MapPin className="w-6 h-6 text-purple-400 mt-1" />
                   <div>
-                    <h3 className="text-white font-serif text-xl">Location</h3>
+                    <h3 className="text-white font-serif text-xl">{t("contact.location")}</h3>
                     <p className="text-gray-400">{CONTACT_INFO.location}</p>
                   </div>
                 </div>
@@ -118,7 +125,7 @@ export default function Contact() {
                 <div className="flex items-start gap-4">
                   <Globe className="w-6 h-6 text-purple-400 mt-1" />
                   <div>
-                    <h3 className="text-white font-serif text-xl">Languages</h3>
+                    <h3 className="text-white font-serif text-xl">{t("contact.languages")}</h3>
                     <p className="text-gray-400">
                       {CONTACT_INFO.languages.join(", ")}
                     </p>
@@ -128,7 +135,7 @@ export default function Contact() {
                 <div className="flex items-start gap-4">
                   <Mail className="w-6 h-6 text-purple-400 mt-1" />
                   <div>
-                    <h3 className="text-white font-serif text-xl">Email</h3>
+                    <h3 className="text-white font-serif text-xl">{t("contact.email")}</h3>
                     <p className="text-gray-400">{CONTACT_INFO.email}</p>
                   </div>
                 </div>
@@ -172,11 +179,11 @@ export default function Contact() {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="text-gray-400 uppercase text-xs tracking-widest">
-                          Name
+                          {t("contact.form.name")}
                         </FormLabel>
                         <FormControl>
                           <Input
-                            placeholder="Your Name"
+                            placeholder={t("contact.form.namePlaceholder")}
                             {...field}
                             className="bg-black/50 border-white/10 focus:border-purple-400 text-white h-12 rounded-none"
                           />
@@ -192,11 +199,32 @@ export default function Contact() {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="text-gray-400 uppercase text-xs tracking-widest">
-                          Email
+                          {t("contact.form.email")}
                         </FormLabel>
                         <FormControl>
                           <Input
-                            placeholder="your@email.com"
+                            placeholder={t("contact.form.emailPlaceholder")}
+                            {...field}
+                            className="bg-black/50 border-white/10 focus:border-purple-400 text-white h-12 rounded-none"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="company"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-gray-400 uppercase text-xs tracking-widest">
+                          {t("contact.form.company")}{" "}
+                          <span className="text-gray-600">({t("contact.form.optional")})</span>
+                        </FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder={t("contact.form.companyPlaceholder")}
                             {...field}
                             className="bg-black/50 border-white/10 focus:border-purple-400 text-white h-12 rounded-none"
                           />
@@ -212,7 +240,7 @@ export default function Contact() {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="text-gray-400 uppercase text-xs tracking-widest">
-                          Project Type
+                          {t("contact.form.projectType")}
                         </FormLabel>
                         <Select
                           onValueChange={field.onChange}
@@ -220,20 +248,20 @@ export default function Contact() {
                         >
                           <FormControl>
                             <SelectTrigger className="bg-black/50 border-white/10 focus:border-purple-400 text-white h-12 rounded-none">
-                              <SelectValue placeholder="Select type" />
+                              <SelectValue placeholder={t("contact.form.selectType")} />
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent className="bg-black border-white/10 text-white rounded-none">
                             <SelectItem value="fiction">
-                              Fiction (Feature/Short)
+                              {t("contact.form.fiction")}
                             </SelectItem>
                             <SelectItem value="advertising">
-                              Advertising
+                              {t("contact.form.advertising")}
                             </SelectItem>
                             <SelectItem value="music-video">
-                              Music Video
+                              {t("contact.form.musicVideo")}
                             </SelectItem>
-                            <SelectItem value="other">Other</SelectItem>
+                            <SelectItem value="other">{t("contact.form.other")}</SelectItem>
                           </SelectContent>
                         </Select>
                         <FormMessage />
@@ -247,11 +275,11 @@ export default function Contact() {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="text-gray-400 uppercase text-xs tracking-widest">
-                          Message
+                          {t("contact.form.message")}
                         </FormLabel>
                         <FormControl>
                           <Textarea
-                            placeholder="Tell me about your project..."
+                            placeholder={t("contact.form.messagePlaceholder")}
                             {...field}
                             className="bg-black/50 border-white/10 focus:border-purple-400 text-white min-h-[150px] rounded-none resize-none"
                           />
@@ -266,7 +294,7 @@ export default function Contact() {
                     disabled={isSubmitting}
                     className="w-full bg-purple-600 hover:bg-purple-700 text-white uppercase tracking-widest h-14 rounded-none text-sm font-semibold transition-colors disabled:opacity-50"
                   >
-                    {isSubmitting ? "Sending..." : "Send Message"}
+                    {isSubmitting ? t("contact.form.sending") : t("contact.form.send")}
                   </Button>
                 </form>
               </Form>
@@ -277,9 +305,9 @@ export default function Contact() {
         {/* Talent Section */}
         <section className="bg-gradient-to-r from-purple-900/30 to-black py-20 border-t border-white/5 mt-auto">
           <div className="container mx-auto px-6 text-center">
-            <h2 className="text-3xl font-serif text-white mb-4">For Talent</h2>
+            <h2 className="text-3xl font-serif text-white mb-4">{t("contact.forTalent.title")}</h2>
             <p className="text-gray-400 mb-8">
-              Looking to be part of upcoming projects? Join our talent database.
+              {t("contact.forTalent.description")}
             </p>
             <a
               href={EXTERNAL_LINKS.talentPool}
@@ -290,7 +318,7 @@ export default function Contact() {
                 variant="outline"
                 className="border-purple-500/50 text-purple-300 hover:bg-purple-500 hover:text-white uppercase tracking-widest px-8 h-12 rounded-none"
               >
-                Join My Database
+                {t("contact.forTalent.button")}
               </Button>
             </a>
           </div>

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-import { Play } from "lucide-react";
+import { Play, MapPin, Building2 } from "lucide-react";
 import { TiltCard } from "@/components/ui/tilt-card";
+import { useTranslation } from "react-i18next";
 
 interface ProjectCardProps {
   image: string;
@@ -10,13 +11,29 @@ interface ProjectCardProps {
   description: string;
   category?: string;
   artist?: string;
+  productionCompany?: string;
+  country?: string;
+  inProduction?: boolean;
 }
 
-export function ProjectCard({ image, title, director, year, description, category, artist }: ProjectCardProps) {
+export function ProjectCard({
+  image,
+  title,
+  director,
+  year,
+  description,
+  category,
+  artist,
+  productionCompany,
+  country,
+  inProduction,
+}: ProjectCardProps) {
+  const { t } = useTranslation();
+
   return (
     <div className="group relative cursor-pointer">
       <TiltCard className="h-full" intensity={10}>
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -25,10 +42,10 @@ export function ProjectCard({ image, title, director, year, description, categor
         >
           <div className="relative aspect-video overflow-hidden bg-white/5 shadow-2xl">
             <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors z-10" />
-            
+
             {/* Image with zoom effect */}
-            <motion.img 
-              src={image} 
+            <motion.img
+              src={image}
               alt={title}
               className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
             />
@@ -40,14 +57,21 @@ export function ProjectCard({ image, title, director, year, description, categor
               </div>
             </div>
 
-            {/* Category Tag */}
-            {category && (
-              <div className="absolute top-4 left-4 z-20">
+            {/* Tags Container */}
+            <div className="absolute top-4 left-4 z-20 flex flex-wrap gap-2">
+              {/* Category Tag */}
+              {category && (
                 <span className="px-3 py-1 bg-black/60 backdrop-blur-sm text-xs uppercase tracking-widest text-white/90 border border-white/10">
                   {category}
                 </span>
-              </div>
-            )}
+              )}
+              {/* In Production Badge */}
+              {inProduction && (
+                <span className="px-3 py-1 bg-purple-600/80 backdrop-blur-sm text-xs uppercase tracking-widest text-white font-semibold animate-pulse">
+                  {t("project.inProduction")}
+                </span>
+              )}
+            </div>
           </div>
 
           <div className="mt-4 space-y-1">
@@ -57,8 +81,25 @@ export function ProjectCard({ image, title, director, year, description, categor
             </div>
             <p className="text-sm text-gray-400 uppercase tracking-wide">
               {artist && <><span className="text-white">{artist}</span> · </>}
-              Dir. {director}
+              {t("project.director")} {director}
             </p>
+            {/* Additional metadata */}
+            {(productionCompany || country) && (
+              <div className="flex flex-wrap gap-3 text-xs text-gray-500 mt-1">
+                {productionCompany && (
+                  <span className="flex items-center gap-1">
+                    <Building2 className="w-3 h-3" />
+                    {productionCompany}
+                  </span>
+                )}
+                {country && (
+                  <span className="flex items-center gap-1">
+                    <MapPin className="w-3 h-3" />
+                    {country}
+                  </span>
+                )}
+              </div>
+            )}
             <p className="text-sm text-gray-500 line-clamp-2 mt-2">{description}</p>
           </div>
         </motion.div>

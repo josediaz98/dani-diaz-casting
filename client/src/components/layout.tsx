@@ -10,6 +10,7 @@ import { Magnetic } from "@/components/ui/magnetic";
 import { Preloader } from "@/components/ui/preloader";
 import { MenuOverlay } from "@/components/ui/menu-overlay";
 import { Footer } from "@/components/footer";
+import { LanguageSelector } from "@/components/ui/language-selector";
 import { SCROLL_THRESHOLD } from "@/config/constants";
 
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -50,8 +51,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 </Link>
 
                 <nav className="hidden md:flex items-center space-x-8">
+                  <LanguageSelector />
                   <Magnetic>
-                    <button 
+                    <button
                       onClick={() => setMobileMenuOpen(true)}
                       className="text-sm font-medium uppercase tracking-widest text-gray-300 hover:text-purple-400 transition-colors flex items-center gap-2 group cursor-hover"
                     >

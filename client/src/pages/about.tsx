@@ -4,8 +4,11 @@ import portraitDani from "@/assets/images/portrait-dani.jpg";
 import { motion } from "framer-motion";
 import { testimonials } from "@/data/testimonials";
 import { fadeInLeft, scaleIn, withDelay } from "@/config/animations";
+import { useTranslation } from "react-i18next";
 
 export default function About() {
+  const { t } = useTranslation();
+
   return (
     <Layout>
       <div className="pt-20">
@@ -14,28 +17,15 @@ export default function About() {
           <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
             <motion.div {...fadeInLeft}>
               <span className="text-purple-400 uppercase tracking-widest text-sm font-bold mb-4 block">
-                About Me
+                {t("about.sectionLabel")}
               </span>
               <h1 className="text-5xl md:text-7xl font-serif text-white mb-8">
-                Dani Díaz
+                {t("about.title")}
               </h1>
               <div className="space-y-6 text-gray-300 leading-relaxed text-lg">
-                <p>
-                  I am a Casting Director bridging the gap between Latin America
-                  and Europe. With over 12 years of experience, I have dedicated
-                  my career to finding the perfect face for every story.
-                </p>
-                <p>
-                  My journey began in theatre production in Lima, moving quickly
-                  into film and advertising casting where I discovered my true
-                  passion: connecting directors with authentic human emotion.
-                </p>
-                <p>
-                  Now based in Spain, I work internationally, bringing a unique
-                  bicultural perspective to every project. I believe that casting
-                  is not just about looks—it's about presence, essence, and the
-                  truth an actor brings to the screen.
-                </p>
+                <p>{t("about.bio.paragraph1")}</p>
+                <p>{t("about.bio.paragraph2")}</p>
+                <p>{t("about.bio.paragraph3")}</p>
               </div>
             </motion.div>
 
@@ -58,27 +48,26 @@ export default function About() {
           <div className="container mx-auto px-6">
             <div className="max-w-3xl mx-auto text-center mb-16">
               <h2 className="text-4xl font-serif text-white mb-6">
-                Work Philosophy
+                {t("about.philosophy.title")}
               </h2>
               <p className="text-gray-400 text-lg">
-                I believe in a safe, collaborative, and human-centered casting
-                process.
+                {t("about.philosophy.subtitle")}
               </p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
               {[
                 {
-                  title: "Human Approach",
-                  desc: "Every actor is treated with dignity and respect. The audition room is a safe space for vulnerability and creativity.",
+                  title: t("about.philosophy.humanApproach.title"),
+                  desc: t("about.philosophy.humanApproach.description"),
                 },
                 {
-                  title: "Authenticity First",
-                  desc: "I look beyond the headshot. I search for the unique spark and real life experience that brings characters to life.",
+                  title: t("about.philosophy.authenticityFirst.title"),
+                  desc: t("about.philosophy.authenticityFirst.description"),
                 },
                 {
-                  title: "Diversity as Nature",
-                  desc: "Inclusion isn't a quota—it's a reflection of the real world. I actively seek out underrepresented voices and faces.",
+                  title: t("about.philosophy.diversityAsNature.title"),
+                  desc: t("about.philosophy.diversityAsNature.description"),
                 },
               ].map((item, i) => (
                 <motion.div
@@ -102,11 +91,11 @@ export default function About() {
         {/* Testimonials */}
         <section className="container mx-auto px-6 py-24">
           <h2 className="text-4xl font-serif text-white mb-12 text-center">
-            What Directors Say
+            {t("about.testimonials.title")}
           </h2>
           <div className="grid md:grid-cols-2 gap-8">
-            {testimonials.map((t, i) => (
-              <TestimonialCard key={i} {...t} />
+            {testimonials.map((testimonial, i) => (
+              <TestimonialCard key={i} {...testimonial} />
             ))}
           </div>
         </section>

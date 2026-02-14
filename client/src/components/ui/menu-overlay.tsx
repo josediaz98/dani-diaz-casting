@@ -1,8 +1,10 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { Link, useLocation } from "wouter";
+import { Link } from "wouter";
 import { X, ArrowRight } from "lucide-react";
 import { Magnetic } from "./magnetic";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { SOCIAL_URLS } from "@/config/constants";
 
 // Images
 import heroBg from "@/assets/images/hero-bg.jpg";
@@ -17,15 +19,20 @@ interface MenuOverlayProps {
 
 export function MenuOverlay({ isOpen, onClose }: MenuOverlayProps) {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
-  const [language, setLanguage] = useState<'en' | 'es'>('en');
+  const { t, i18n } = useTranslation();
+  const currentLang = i18n.language.startsWith("es") ? "es" : "en";
+
+  const toggleLanguage = (lang: "en" | "es") => {
+    i18n.changeLanguage(lang);
+  };
 
   const menuItems = [
-    { title: "Home", href: "/", image: heroBg },
-    { title: "Fiction", href: "/work/fiction", image: fictionCover },
-    { title: "Advertising", href: "/work/ads", image: adsCover },
-    { title: "Music Videos", href: "/work/music-videos", image: musicCover },
-    { title: "About", href: "/about", image: heroBg }, // Fallback to hero for About
-    { title: "Contact", href: "/contact", image: heroBg }, // Fallback to hero for Contact
+    { title: t("common.home"), href: "/", image: heroBg },
+    { title: t("nav.fiction"), href: "/work/fiction", image: fictionCover },
+    { title: t("nav.ads"), href: "/work/ads", image: adsCover },
+    { title: t("nav.musicVideos"), href: "/work/music-videos", image: musicCover },
+    { title: t("nav.about"), href: "/about", image: heroBg },
+    { title: t("nav.contact"), href: "/contact", image: heroBg },
   ];
 
   const container = {
@@ -157,25 +164,25 @@ export function MenuOverlay({ isOpen, onClose }: MenuOverlayProps) {
               </div>
 
               {/* Info Column */}
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.5, duration: 0.8 }}
                 className="hidden md:flex md:col-span-5 flex-col justify-end h-3/4 border-l border-white/10 pl-16 pb-20 space-y-16"
               >
                 <div>
-                  <h4 className="text-purple-400 uppercase tracking-widest text-xs mb-6 font-semibold">Language</h4>
+                  <h4 className="text-purple-400 uppercase tracking-widest text-xs mb-6 font-semibold">{t("menu.language")}</h4>
                   <div className="flex gap-4 text-3xl font-serif">
-                    <button 
-                      onClick={() => setLanguage('en')}
-                      className={`transition-colors duration-300 ${language === 'en' ? 'text-white' : 'text-gray-600 hover:text-gray-400'}`}
+                    <button
+                      onClick={() => toggleLanguage('en')}
+                      className={`transition-colors duration-300 ${currentLang === 'en' ? 'text-white' : 'text-gray-600 hover:text-gray-400'}`}
                     >
                       EN
                     </button>
                     <span className="text-gray-700">/</span>
-                    <button 
-                      onClick={() => setLanguage('es')}
-                      className={`transition-colors duration-300 ${language === 'es' ? 'text-white' : 'text-gray-600 hover:text-gray-400'}`}
+                    <button
+                      onClick={() => toggleLanguage('es')}
+                      className={`transition-colors duration-300 ${currentLang === 'es' ? 'text-white' : 'text-gray-600 hover:text-gray-400'}`}
                     >
                       ES
                     </button>
@@ -183,26 +190,26 @@ export function MenuOverlay({ isOpen, onClose }: MenuOverlayProps) {
                 </div>
 
                 <div>
-                  <h4 className="text-purple-400 uppercase tracking-widest text-xs mb-6 font-semibold">Contact</h4>
+                  <h4 className="text-purple-400 uppercase tracking-widest text-xs mb-6 font-semibold">{t("nav.contact")}</h4>
                   <a href="mailto:contact@danidiazcasting.com" className="block text-3xl text-white font-serif hover:text-purple-400 transition-colors">
                     contact@danidiazcasting.com
                   </a>
-                  <p className="text-gray-500 mt-4 text-sm uppercase tracking-wider">Based in Spain, working Worldwide</p>
+                  <p className="text-gray-500 mt-4 text-sm uppercase tracking-wider">{t("menu.basedIn")}</p>
                 </div>
 
                 <div>
-                   <h4 className="text-purple-400 uppercase tracking-widest text-xs mb-6 font-semibold">Follow</h4>
+                   <h4 className="text-purple-400 uppercase tracking-widest text-xs mb-6 font-semibold">{t("menu.follow")}</h4>
                    <div className="flex gap-8 text-lg text-gray-400">
-                      <a href="#" className="hover:text-white transition-colors border-b border-transparent hover:border-white/50 pb-1">Instagram</a>
-                      <a href="#" className="hover:text-white transition-colors border-b border-transparent hover:border-white/50 pb-1">LinkedIn</a>
-                      <a href="#" className="hover:text-white transition-colors border-b border-transparent hover:border-white/50 pb-1">IMDb</a>
+                      <a href={SOCIAL_URLS.instagram} className="hover:text-white transition-colors border-b border-transparent hover:border-white/50 pb-1">Instagram</a>
+                      <a href={SOCIAL_URLS.linkedin} className="hover:text-white transition-colors border-b border-transparent hover:border-white/50 pb-1">LinkedIn</a>
+                      <a href={SOCIAL_URLS.imdb} className="hover:text-white transition-colors border-b border-transparent hover:border-white/50 pb-1">IMDb</a>
                    </div>
                 </div>
 
                 <div>
                    <Link href="/contact">
                       <a onClick={onClose} className="group inline-flex items-center gap-4 text-white text-xl border border-white/20 rounded-full px-8 py-4 hover:bg-white hover:text-black hover:border-white transition-all duration-500">
-                        Let's Work Together 
+                        {t("menu.letsWork")}
                         <ArrowRight className="w-5 h-5 group-hover:rotate-45 transition-transform duration-500" />
                       </a>
                    </Link>

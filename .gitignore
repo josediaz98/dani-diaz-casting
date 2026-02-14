@@ -5,3 +5,11 @@ server/public
 vite.config.ts.*
 *.tar.gz
 .local/
+
+# Large media files
+*.mp4
+*.MP4
+*.mov
+*.MOV
+*.avi
+*.AVI

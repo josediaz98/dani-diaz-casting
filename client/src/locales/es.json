@@ -1,0 +1,163 @@
+{
+  "common": {
+    "viewWork": "Ver Mi Trabajo",
+    "joinTalentPool": "Unirse al Banco de Talentos",
+    "scroll": "Scroll",
+    "getInTouch": "Contactar",
+    "learnMore": "Conoce Más",
+    "menu": "Menú",
+    "open": "Abrir",
+    "close": "Cerrar",
+    "home": "Inicio",
+    "backToTop": "Volver arriba",
+    "explore": "Explorar",
+    "viewAllProjects": "Ver Todos los Proyectos"
+  },
+  "audio": {
+    "mute": "Silenciar",
+    "unmute": "Activar sonido"
+  },
+  "hero": {
+    "title": "DANI DÍAZ",
+    "subtitle": "Directora de Casting Internacional",
+    "tagline": "Encuentra los rostros que tu historia necesita."
+  },
+  "cta": {
+    "title": "Let's Cast It",
+    "description": "Casting internacional con un enfoque humano—talento auténtico, presencia en cámara y un proceso fluido desde el brief hasta la selección final."
+  },
+  "about": {
+    "sectionLabel": "Sobre Mí",
+    "title": "Dani Díaz",
+    "bio": {
+      "paragraph1": "Soy una Directora de Casting que conecta Latinoamérica y Europa. Con más de 12 años de experiencia, he dedicado mi carrera a encontrar el rostro perfecto para cada historia.",
+      "paragraph2": "Mi camino comenzó en la producción teatral en Lima, pasando rápidamente al casting cinematográfico y publicitario donde descubrí mi verdadera pasión: conectar directores con la emoción humana auténtica.",
+      "paragraph3": "Ahora basada en España, trabajo internacionalmente, aportando una perspectiva bicultural única a cada proyecto. Creo que el casting no se trata solo de apariencia—se trata de presencia, esencia y la verdad que un actor aporta a la pantalla."
+    },
+    "quote": "Soy una Directora de Casting peruana con más de 12 años de experiencia liderando proyectos en Latinoamérica y Europa. Me especializo en descubrir talento auténtico y crear metodologías de casting inclusivas y centradas en las personas.",
+    "philosophy": {
+      "title": "Filosofía de Trabajo",
+      "subtitle": "Creo en un proceso de casting seguro, colaborativo y centrado en las personas.",
+      "humanApproach": {
+        "title": "Enfoque Humano",
+        "description": "Cada actor es tratado con dignidad y respeto. La sala de audiciones es un espacio seguro para la vulnerabilidad y la creatividad."
+      },
+      "authenticityFirst": {
+        "title": "Autenticidad Primero",
+        "description": "Miro más allá del headshot. Busco la chispa única y la experiencia de vida real que da vida a los personajes."
+      },
+      "diversityAsNature": {
+        "title": "Diversidad Natural",
+        "description": "La inclusión no es una cuota—es un reflejo del mundo real. Busco activamente voces y rostros subrepresentados."
+      }
+    },
+    "testimonials": {
+      "title": "Lo Que Dicen los Directores"
+    }
+  },
+  "contact": {
+    "title": "Trabajemos Juntos",
+    "description": "Ya sea que busques el elenco perfecto para tu próxima película, comercial o videoclip, estoy aquí para ayudarte a encontrar los rostros que cuenten tu historia.",
+    "location": "Ubicación",
+    "languages": "Idiomas",
+    "email": "Email",
+    "form": {
+      "name": "Nombre",
+      "namePlaceholder": "Tu Nombre",
+      "email": "Email",
+      "emailPlaceholder": "tu@email.com",
+      "company": "Empresa / Productora",
+      "companyPlaceholder": "Productora o agencia",
+      "optional": "Opcional",
+      "projectType": "Tipo de Proyecto",
+      "selectType": "Seleccionar tipo",
+      "fiction": "Ficción (Largometraje/Corto)",
+      "advertising": "Publicidad",
+      "musicVideo": "Videoclip",
+      "other": "Otro",
+      "message": "Mensaje",
+      "messagePlaceholder": "Cuéntame sobre tu proyecto...",
+      "send": "Enviar Mensaje",
+      "sending": "Enviando..."
+    },
+    "forTalent": {
+      "title": "Para Talentos",
+      "description": "¿Quieres formar parte de próximos proyectos? Únete a nuestra base de datos de talentos.",
+      "button": "Unirse a Mi Base de Datos"
+    },
+    "validation": {
+      "nameRequired": "El nombre es requerido.",
+      "invalidEmail": "Dirección de email inválida.",
+      "selectProjectType": "Por favor selecciona un tipo de proyecto.",
+      "messageMinLength": "El mensaje debe tener al menos 10 caracteres."
+    },
+    "toast": {
+      "successTitle": "Mensaje Enviado",
+      "errorTitle": "Error",
+      "errorMessage": "Error al enviar el mensaje. Por favor intenta de nuevo."
+    }
+  },
+  "categories": {
+    "fiction": {
+      "title": "Ficción",
+      "subtitle": "60+ procesos de casting para largometrajes y cortometrajes, trabajando con directores de todo el mundo",
+      "description": "Largometrajes y cortometrajes con directores de todo el mundo"
+    },
+    "ads": {
+      "title": "Publicidad y Moda",
+      "subtitle": "Proyectos publicitarios en Europa y Latinoamérica, encontrando talento con presencia y credibilidad en cámara",
+      "description": "Encontrando talento con presencia, actitud y credibilidad en cámara"
+    },
+    "musicVideos": {
+      "title": "Videoclips",
+      "subtitle": "30+ proyectos en diferentes géneros, creando castings que elevan la energía y estética de cada pieza",
+      "description": "Castings que elevan la energía y estética de cada pieza"
+    }
+  },
+  "nav": {
+    "work": "Trabajo",
+    "fiction": "Ficción",
+    "ads": "Publicidad",
+    "musicVideos": "Videoclips",
+    "about": "Sobre Mí",
+    "contact": "Contacto"
+  },
+  "footer": {
+    "tagline": "Directora de Casting Internacional",
+    "description": "Conectando directores con talento auténtico en Europa y Latinoamérica.",
+    "quickLinks": "Enlaces Rápidos",
+    "connect": "Conectar",
+    "rights": "Todos los derechos reservados.",
+    "letsCreate": "Creemos",
+    "somethingIconic": "algo icónico.",
+    "startProject": "Comenzar un Proyecto",
+    "sitemap": "Mapa del Sitio",
+    "socials": "Redes",
+    "location": "Madrid, España"
+  },
+  "menu": {
+    "language": "Idioma",
+    "basedIn": "Basada en España, trabajando en todo el mundo",
+    "follow": "Seguir",
+    "letsWork": "Trabajemos Juntos"
+  },
+  "work": {
+    "categoryNotFound": "Categoría No Encontrada",
+    "goHome": "Ir al Inicio",
+    "startProject": "Comienza Tu Próximo Proyecto"
+  },
+  "featured": {
+    "title": "Trabajos Destacados",
+    "description": "Campañas recientes mostrando talento auténtico y visión creativa."
+  },
+  "inProduction": {
+    "label": "Actualmente Trabajando En",
+    "title": "En Producción",
+    "description": "Proyectos en los que estoy trabajando actualmente. Siempre buscando el talento perfecto para cada historia.",
+    "viewAll": "Ver Todos los Proyectos"
+  },
+  "project": {
+    "inProduction": "En Producción",
+    "director": "Dir."
+  }
+}

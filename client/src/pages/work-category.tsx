@@ -5,22 +5,24 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { categories } from "@/data/projects";
 import { heroTextReveal, fadeIn } from "@/config/animations";
+import { useTranslation } from "react-i18next";
 
 export default function WorkCategory() {
   const [, params] = useRoute("/work/:category");
   const categoryKey = params?.category as keyof typeof categories;
   const categoryData = categories[categoryKey];
+  const { t } = useTranslation();
 
   if (!categoryData) {
     return (
       <Layout>
         <div className="pt-32 text-center">
-          <h1 className="text-4xl text-white">Category Not Found</h1>
+          <h1 className="text-4xl text-white">{t("work.categoryNotFound")}</h1>
           <Button
             asChild
             className="mt-4 bg-white text-black hover:bg-gray-200"
           >
-            <a href="/">Go Home</a>
+            <a href="/">{t("work.goHome")}</a>
           </Button>
         </div>
       </Layout>
@@ -67,14 +69,14 @@ export default function WorkCategory() {
 
         <section className="py-24 border-t border-white/5 text-center">
           <h2 className="text-3xl font-serif text-white mb-6">
-            Start Your Next Project
+            {t("work.startProject")}
           </h2>
           <Button
             asChild
             size="lg"
             className="bg-white text-black hover:bg-purple-400 hover:text-white uppercase tracking-widest px-10 rounded-none h-14"
           >
-            <a href="/contact">Get In Touch</a>
+            <a href="/contact">{t("common.getInTouch")}</a>
           </Button>
         </section>
       </div>
