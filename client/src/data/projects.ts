@@ -7,9 +7,10 @@ export interface Project {
   image: string;
   title: string;
   director: string;
-  year: string;
+  year?: string;
   description: string;
   category?: string;
+  artist?: string;
 }
 
 export interface CategoryData {
@@ -22,31 +23,73 @@ export interface CategoryData {
 // Fiction Projects
 export const fictionProjects: Project[] = [
   {
-    title: "The Silent Echo",
-    director: "Maria González",
-    year: "2024",
-    description: "A psychological thriller requiring intense emotional range.",
+    title: "El Rebote",
+    director: "Lukas Lane",
+    description:
+      "After a heart-wrenching divorce, a middle-aged tourist navigates the streets of Barcelona, the city where he proposed to his former love.",
     image: fictionCover,
   },
   {
-    title: "Lost in Translation",
-    director: "Sofia Coppola (Homage)",
-    year: "2022",
-    description: "Recreation project focusing on subtle micro-expressions.",
+    title: "Incompatible",
+    director: "Judit Vilarrasa",
+    description:
+      "Danza, aventura y pasión convergen para contar la historia de Bruna, que al conocer a Sam se lanza en un viaje a Berlín que podría cambiarle la vida.",
     image: heroBg,
   },
   {
-    title: "Summer Rain",
-    director: "Carlos Ruiz",
-    year: "2023",
-    description: "Coming of age story set in rural Spain.",
+    title: "Ningu Borda",
+    director: "Julia Coldwell",
+    description:
+      "Candela accidentally runs over her nephew's dog and decides not to confess. She invents a legend about a pilgrimage of dogs and invites the boy to join the search.",
     image: fictionCover,
   },
   {
-    title: "The Apartment",
-    director: "Ana Torres",
-    year: "2021",
-    description: "Chamber drama with a cast of 3.",
+    title: "Nemesis",
+    director: "Adam Yadlovskyi",
+    description:
+      "Nadia wakes up in a mysterious bunker. She has one goal in mind: save his little son, who has been kidnapped by the same people who hold her.",
+    image: heroBg,
+  },
+  {
+    title: "Frí(g)ida",
+    director: "Fernanda del Miró",
+    description:
+      "Una abuela viuda ve interrumpida su paz cuando llega un misterioso paquete que es abierto por su hijo, quien descubre un vibrador en su interior.",
+    image: fictionCover,
+  },
+  {
+    title: "La Niña Tatuada",
+    director: "Elisa Lanzas",
+    description:
+      "Irene sufre el acoso callejero de un desconocido. Asustada, acude a su querido padre en busca de protección, pero acaba decepcionada.",
+    image: heroBg,
+  },
+  {
+    title: "Birth",
+    director: "Bart Schrijver",
+    description:
+      "Birth follows David and Ana during the birth of their first child. The film captures the intimate transformation of a man becoming a father.",
+    image: fictionCover,
+  },
+  {
+    title: "Autorretrato",
+    director: "Daniela Goto",
+    description:
+      "Una vigilante de sala de un museo de arte se enfrenta por primera vez al autorretrato fotográfico, tarea que la hará observarse de una manera distinta.",
+    image: heroBg,
+  },
+  {
+    title: "Habla Bajo",
+    director: "Benedetta Cuicchi",
+    description:
+      "In a small town in Spain, Laia tries to stop her drunk younger brother from telling their traditionalist mother that he has fallen in love with a foreign boy.",
+    image: fictionCover,
+  },
+  {
+    title: "Coronación",
+    director: "Ariadna Onofri",
+    description:
+      "Aunque Sol y Rodrigo lo tienen todo preparado para el día del parto, nada ocurre como ellos habían deseado. Todo son conjeturas.",
     image: heroBg,
   },
 ];
@@ -54,24 +97,59 @@ export const fictionProjects: Project[] = [
 // Ads & Fashion Projects
 export const adsProjects: Project[] = [
   {
-    title: "Urban Pulse",
-    director: "Jean-Luc Pierre",
-    year: "2023",
-    description: "Global sportswear campaign focused on street dancers.",
+    title: "Decathlon Summer",
+    director: "Jordi Loops",
+    description:
+      "Summer campaign for Decathlon showcasing real athletes and everyday sports enthusiasts in dynamic, authentic moments.",
     image: adsCover,
   },
   {
-    title: "Midnight Scent",
-    director: "Elena Valli",
-    year: "2024",
-    description: "Luxury perfume commercial with editorial aesthetic.",
+    title: "KOI Vodka",
+    director: "Jordi Loops",
+    description:
+      "Un hombre que encarna el fuego. Seguro de sí mismo, magnético, imparable. Su vida avanza entre luces, deseo y vértigo.",
     image: adsCover,
   },
   {
-    title: "Tech Future",
-    director: "Mark Chen",
-    year: "2023",
-    description: "Clean, futuristic tech brand launch.",
+    title: "See You",
+    director: "Edu Iova & Miguel Barceló",
+    description:
+      "Tras una ruptura reciente, una pareja se encuentra por última vez para cerrar lo que quedó pendiente. Entre columnas, se miran y se despiden.",
+    image: adsCover,
+  },
+  {
+    title: "Montana Colors",
+    director: "David Cuní",
+    description:
+      "Tres miradas que recorren la ciudad. Tres cuerpos que crean, transforman y resignifican el pulso urbano a través del arte.",
+    image: adsCover,
+  },
+  {
+    title: "Etnia Barcelona",
+    director: "Amparo Bondia & Marta",
+    description:
+      "Una fortuneteller moderna revela el secreto detrás de su don: gracias a sus gafas Etnia, puede ver con absoluta claridad aquello que los demás no perciben.",
+    image: adsCover,
+  },
+  {
+    title: "Ölend Is In The Air",
+    director: "Claudia Díaz & Ángela Sanz",
+    description:
+      "El estilo, diseño e innovación se funden en un universo que respira elegancia. Imágenes precisas y atmosféricas dan forma a una experiencia sensorial.",
+    image: adsCover,
+  },
+  {
+    title: "El Lobo",
+    director: "John Araque & Jan Callis",
+    description:
+      "Turrón para perros campaign featuring authentic family moments and playful pet interactions during the holiday season.",
+    image: adsCover,
+  },
+  {
+    title: "Oxford Generation",
+    director: "Noa González",
+    description:
+      "Young talent campaign capturing the energy and authenticity of a new generation through street casting and natural performances.",
     image: adsCover,
   },
 ];
@@ -79,24 +157,83 @@ export const adsProjects: Project[] = [
 // Music Video Projects
 export const musicVideoProjects: Project[] = [
   {
-    title: "Neon Nights",
-    director: "Sarah Smith",
-    year: "2023",
-    description: "Music video featuring 50+ background artists.",
+    title: "La Casualidad",
+    artist: "Seye & Álex Ubago",
+    director: "Daniela Cortés",
+    description:
+      "Historias sobre personas que aún no se conocen, pero ya se sienten. Sobre encuentros que pudieron ser y miradas que casi suceden.",
     image: musicCover,
   },
   {
-    title: "Heartbeat",
-    director: "David Wolf",
-    year: "2022",
-    description: "Narrative driven music video.",
+    title: "Vamo' Echando",
+    artist: "Nia Correia & Guaynaa",
+    director: "John Araque & Santi Medina",
+    description:
+      "Historias que nacen en el movimiento. Miradas que se entienden sin palabras. Cuerpos que se encuentran antes que las conversaciones.",
     image: musicCover,
   },
   {
-    title: "Dance Floor",
-    director: "Lisa Ray",
-    year: "2023",
-    description: "Choreography heavy production.",
+    title: "Todo X Ti",
+    artist: "Cora Novoa",
+    director: "Una explosión atómica",
+    description:
+      "Historias que imaginan futuros posibles. Mundos donde la tecnología convive con el deseo profundo de conexión humana.",
+    image: musicCover,
+  },
+  {
+    title: "Chanel",
+    artist: "Frei",
+    director: "Ismael Okbye",
+    description:
+      "Visual narrative exploring identity and style through bold imagery and magnetic on-screen presence.",
+    image: musicCover,
+  },
+  {
+    title: "Noti",
+    artist: "La Blackie",
+    director: "John Araque & Santi Medina",
+    description:
+      "Relatos de personajes que conocen su fuerza. Que avanzan con determinación, magnetismo y presencia.",
+    image: musicCover,
+  },
+  {
+    title: "So Cute",
+    artist: "Mayo",
+    director: "John Araque & Santi Medina",
+    description:
+      "Identidades que se construyen frente al espejo y bajo las luces. Rostros que se sostienen con presencia y miradas magnéticas.",
+    image: musicCover,
+  },
+  {
+    title: "París",
+    artist: "Ly Raine",
+    director: "John Araque & Santi Medina",
+    description:
+      "Sueños que se sienten reales. Deseos que existen aunque solo duren un instante. Personajes que habitan la noche como fantasía.",
+    image: musicCover,
+  },
+  {
+    title: "Bonsai",
+    artist: "Bores D",
+    director: "Ismael Okbye",
+    description:
+      "Energías que se reconocen en el movimiento. Atracciones que se sienten en el cuerpo antes que en las palabras.",
+    image: musicCover,
+  },
+  {
+    title: "Loba",
+    artist: "Sizzay",
+    director: "John Araque",
+    description:
+      "Una energía seductora y salvaje atraviesa la noche: una mujer segura de sí misma, guiada por el deseo, el ritmo y el juego del romance.",
+    image: musicCover,
+  },
+  {
+    title: "Ah Ah",
+    artist: "Paula Koops",
+    director: "John Araque & Jan Callis",
+    description:
+      "Después de la caída llega la liberación. Una mujer que se elige y transforma la pérdida en impulso, la herida en luz.",
     image: musicCover,
   },
 ];
@@ -105,34 +242,35 @@ export const musicVideoProjects: Project[] = [
 export const featuredWork: Project[] = [
   {
     image: fictionCover,
-    title: "The Silent Echo",
-    director: "Maria González",
-    year: "2024",
-    description: "A psychological thriller requiring intense emotional range and authentic local dialect.",
+    title: "El Rebote",
+    director: "Lukas Lane",
+    description:
+      "After a heart-wrenching divorce, a middle-aged tourist navigates the streets of Barcelona, the city where he proposed to his former love.",
     category: "Fiction",
   },
   {
     image: adsCover,
-    title: "Urban Pulse",
-    director: "Jean-Luc Pierre",
-    year: "2023",
-    description: "Global sportswear campaign focused on street dancers and real athletes.",
+    title: "Decathlon Summer",
+    director: "Jordi Loops",
+    description:
+      "Summer campaign for Decathlon showcasing real athletes and everyday sports enthusiasts in dynamic, authentic moments.",
     category: "Advertising",
   },
   {
     image: musicCover,
-    title: "Neon Nights",
-    director: "Sarah Smith",
-    year: "2023",
-    description: "Music video featuring 50+ background artists and 3 lead dancers.",
+    title: "La Casualidad",
+    artist: "Seye & Álex Ubago",
+    director: "Daniela Cortés",
+    description:
+      "Historias sobre personas que aún no se conocen, pero ya se sienten. Sobre encuentros que pudieron ser y miradas que casi suceden.",
     category: "Music Video",
   },
   {
     image: heroBg,
-    title: "Lost in Translation",
-    director: "Sofia Coppola (Homage)",
-    year: "2022",
-    description: "Recreation project focusing on subtle micro-expressions and chemistry.",
+    title: "Birth",
+    director: "Bart Schrijver",
+    description:
+      "Birth follows David and Ana during the birth of their first child. The film captures the intimate transformation of a man becoming a father.",
     category: "Fiction",
   },
 ];
@@ -141,19 +279,22 @@ export const featuredWork: Project[] = [
 export const categories: Record<string, CategoryData> = {
   fiction: {
     title: "Fiction",
-    subtitle: "Feature films and short films with authentic characters",
+    subtitle:
+      "60+ casting processes for feature films and short films, working with directors from around the world",
     cover: fictionCover,
     projects: fictionProjects,
   },
   ads: {
     title: "Ads & Fashion",
-    subtitle: "Campaigns that connect with real presence",
+    subtitle:
+      "Advertising projects across Europe and Latin America, finding talent with presence and on-camera credibility",
     cover: adsCover,
     projects: adsProjects,
   },
   "music-videos": {
     title: "Music Videos",
-    subtitle: "Visual storytelling through movement and energy",
+    subtitle:
+      "30+ projects across different genres, creating castings that elevate the energy and aesthetic of each piece",
     cover: musicCover,
     projects: musicVideoProjects,
   },
@@ -164,21 +305,21 @@ export const categoryCards = [
   {
     title: "Fiction",
     count: "60+",
-    desc: "Feature films and short films with authentic characters",
+    desc: "Feature films and short films with directors from around the world",
     link: "/work/fiction",
     image: fictionCover,
   },
   {
     title: "Ads & Fashion",
     count: "30+",
-    desc: "Campaigns that connect with real presence",
+    desc: "Finding talent with presence, attitude, and on-camera credibility",
     link: "/work/ads",
     image: adsCover,
   },
   {
     title: "Music Videos",
     count: "30+",
-    desc: "Visual storytelling through movement and energy",
+    desc: "Castings that elevate the energy and aesthetic of each piece",
     link: "/work/music-videos",
     image: musicCover,
   },

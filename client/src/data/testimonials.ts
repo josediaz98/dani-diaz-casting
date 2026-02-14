@@ -7,25 +7,29 @@ export interface Testimonial {
 
 export const testimonials: Testimonial[] = [
   {
-    quote: "As a foreign director, Dani's contributions to my project were essential. The people she introduced me to were inspired, talented, and most importantly unique...",
+    quote:
+      "As a foreign director, Dani's contributions to my project were essential. The people she introduced me to were inspired, talented, and most importantly unique. The performers were authentic and idiosyncratic in the best possible way, and are often cited by audiences as the strongest components of the film.",
     author: "Luke Lane",
     role: "Director",
     country: "USA",
   },
   {
-    quote: "Her approach combines precision, intuition and a very clear understanding of the narrative and commercial needs of the project...",
+    quote:
+      "Su enfoque combina precisión, intuición y una comprensión muy clara de las necesidades narrativas y comerciales del proyecto. Dani sabe crear un espacio de confianza donde el intérprete puede explorar con libertad y mostrar su verdad sin artificios.",
     author: "Moisé Curia",
     role: "Actor/Director",
     country: "Italy",
   },
   {
-    quote: "Working with her is a true privilege. She is a casting director as sweet in her manner as she is impeccable professionally...",
+    quote:
+      "Trabajar con ella es un verdadero privilegio. Es una directora de casting tan dulce en el trato como impecable en lo profesional. Tiene una sensibilidad especial para entender cada proyecto y encontrar el talento perfecto.",
     author: "Héctor Aja Pires",
     role: "Producer",
     country: "Spain",
   },
   {
-    quote: "Dani really put me in a fantastic tone and acting level that allowed me to understand the specific emotional range that the character needed...",
+    quote:
+      "Dani me puso en un tono y un nivel actoral fantástico que me permitió entender la gama emocional específica que el personaje necesitaba. Fue un casting muy delicioso, ojalá todos los castings contasen con esta magia.",
     author: "Julián Díaz",
     role: "Actor",
     country: "Colombia",

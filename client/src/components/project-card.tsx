@@ -6,12 +6,13 @@ interface ProjectCardProps {
   image: string;
   title: string;
   director: string;
-  year: string;
+  year?: string;
   description: string;
   category?: string;
+  artist?: string;
 }
 
-export function ProjectCard({ image, title, director, year, description, category }: ProjectCardProps) {
+export function ProjectCard({ image, title, director, year, description, category, artist }: ProjectCardProps) {
   return (
     <div className="group relative cursor-pointer">
       <TiltCard className="h-full" intensity={10}>
@@ -52,9 +53,12 @@ export function ProjectCard({ image, title, director, year, description, categor
           <div className="mt-4 space-y-1">
             <div className="flex justify-between items-baseline">
               <h3 className="text-xl font-serif text-white group-hover:text-primary-foreground transition-colors">{title}</h3>
-              <span className="text-sm text-gray-500 font-mono">{year}</span>
+              {year && <span className="text-sm text-gray-500 font-mono">{year}</span>}
             </div>
-            <p className="text-sm text-gray-400 uppercase tracking-wide">Dir. {director}</p>
+            <p className="text-sm text-gray-400 uppercase tracking-wide">
+              {artist && <><span className="text-white">{artist}</span> · </>}
+              Dir. {director}
+            </p>
             <p className="text-sm text-gray-500 line-clamp-2 mt-2">{description}</p>
           </div>
         </motion.div>
