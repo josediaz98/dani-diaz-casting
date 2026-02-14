@@ -136,7 +136,12 @@ export default function Contact() {
                   <Mail className="w-6 h-6 text-purple-400 mt-1" />
                   <div>
                     <h3 className="text-white font-serif text-xl">{t("contact.email")}</h3>
-                    <p className="text-gray-400">{CONTACT_INFO.email}</p>
+                    <a
+                      href={`mailto:${CONTACT_INFO.email}`}
+                      className="text-gray-400 hover:text-purple-400 transition-colors"
+                    >
+                      {CONTACT_INFO.email}
+                    </a>
                   </div>
                 </div>
               </div>

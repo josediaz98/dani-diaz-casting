@@ -1,24 +1,29 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { AlertCircle } from "lucide-react";
+import { Layout } from "@/components/layout";
+import { Button } from "@/components/ui/button";
+import { Link } from "wouter";
 import { useTranslation } from "react-i18next";
 
 export default function NotFound() {
   const { t } = useTranslation();
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-gray-50">
-      <Card className="w-full max-w-md mx-4">
-        <CardContent className="pt-6">
-          <div className="flex mb-4 gap-2">
-            <AlertCircle className="h-8 w-8 text-red-500" />
-            <h1 className="text-2xl font-bold text-gray-900">{t("notFound.title")}</h1>
-          </div>
-
-          <p className="mt-4 text-sm text-gray-600">
+    <Layout>
+      <div className="min-h-screen w-full flex items-center justify-center">
+        <div className="text-center px-6">
+          <h1 className="text-8xl md:text-9xl font-serif font-bold text-white mb-4">404</h1>
+          <p className="text-xl text-gray-400 mb-8">
             {t("notFound.message")}
           </p>
-        </CardContent>
-      </Card>
-    </div>
+          <Link href="/">
+            <Button
+              size="lg"
+              className="bg-purple-600 hover:bg-purple-700 text-white uppercase tracking-widest h-12 px-8 rounded-none"
+            >
+              {t("work.goHome")}
+            </Button>
+          </Link>
+        </div>
+      </div>
+    </Layout>
   );
 }

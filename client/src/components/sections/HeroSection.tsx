@@ -5,7 +5,6 @@ import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { TextReveal } from "@/components/ui/text-reveal";
 import { Magnetic } from "@/components/ui/magnetic";
-import { EXTERNAL_LINKS } from "@/config/constants";
 import heroBg from "@/assets/images/hero-bg.jpg";
 
 export function HeroSection() {
@@ -73,21 +72,17 @@ export function HeroSection() {
               </Button>
             </Magnetic>
           </Link>
-          <a
-            href={EXTERNAL_LINKS.talentPool}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <Link href="/contact">
             <Magnetic>
               <Button
                 variant="outline"
                 size="lg"
                 className="border-white/30 text-white hover:bg-white/10 hover:text-white uppercase tracking-widest text-xs h-12 px-8 rounded-none transition-transform"
               >
-                {t("common.joinTalentPool")}
+                {t("common.getInTouch")}
               </Button>
             </Magnetic>
-          </a>
+          </Link>
         </motion.div>
       </motion.div>
 
