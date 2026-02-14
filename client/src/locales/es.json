@@ -13,6 +13,25 @@
     "explore": "Explorar",
     "viewAllProjects": "Ver Todos los Proyectos"
   },
+  "stats": {
+    "castings": "Castings",
+    "years": "Años",
+    "languages": "Idiomas",
+    "continents": "Continentes"
+  },
+  "marquee": {
+    "fiction": "FICCIÓN",
+    "advertising": "PUBLICIDAD",
+    "musicVideos": "VIDEOCLIPS",
+    "documentary": "DOCUMENTAL"
+  },
+  "notFound": {
+    "title": "404 Página No Encontrada",
+    "message": "La página que buscas no existe."
+  },
+  "languageSelector": {
+    "switchTo": "Cambiar a {{language}}"
+  },
   "audio": {
     "mute": "Silenciar",
     "unmute": "Activar sonido"

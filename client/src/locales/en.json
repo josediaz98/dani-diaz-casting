@@ -13,6 +13,25 @@
     "explore": "Explore",
     "viewAllProjects": "View All Projects"
   },
+  "stats": {
+    "castings": "Castings",
+    "years": "Years",
+    "languages": "Languages",
+    "continents": "Continents"
+  },
+  "marquee": {
+    "fiction": "FICTION",
+    "advertising": "ADVERTISING",
+    "musicVideos": "MUSIC VIDEOS",
+    "documentary": "DOCUMENTARY"
+  },
+  "notFound": {
+    "title": "404 Page Not Found",
+    "message": "The page you're looking for doesn't exist."
+  },
+  "languageSelector": {
+    "switchTo": "Switch to {{language}}"
+  },
   "audio": {
     "mute": "Mute",
     "unmute": "Unmute"

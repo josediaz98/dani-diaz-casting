@@ -1,11 +1,14 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 export function StatsGrid() {
+  const { t } = useTranslation();
+
   const stats = [
-    { value: "100+", label: "Castings" },
-    { value: "12+", label: "Years" },
-    { value: "3", label: "Languages" },
-    { value: "2", label: "Continents" },
+    { value: "100+", label: t("stats.castings") },
+    { value: "12+", label: t("stats.years") },
+    { value: "3", label: t("stats.languages") },
+    { value: "2", label: t("stats.continents") },
   ];
 
   return (

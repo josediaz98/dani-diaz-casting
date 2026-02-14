@@ -2,6 +2,7 @@ import { Link } from "wouter";
 import { cn } from "@/lib/utils";
 import { Menu } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { CustomCursor } from "@/components/ui/custom-cursor";
 import { GrainOverlay } from "@/components/ui/grain-overlay";
 import { SmoothScroll } from "@/components/ui/smooth-scroll";
@@ -14,6 +15,7 @@ import { LanguageSelector } from "@/components/ui/language-selector";
 import { SCROLL_THRESHOLD } from "@/config/constants";
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const { t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -58,8 +60,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
                       className="text-sm font-medium uppercase tracking-widest text-gray-300 hover:text-purple-400 transition-colors flex items-center gap-2 group cursor-hover"
                     >
                       <span className="relative overflow-hidden block h-4">
-                          <span className="block group-hover:-translate-y-full transition-transform duration-300">Menu</span>
-                          <span className="block absolute top-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300">Open</span>
+                          <span className="block group-hover:-translate-y-full transition-transform duration-300">{t("common.menu")}</span>
+                          <span className="block absolute top-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300">{t("common.open")}</span>
                       </span>
                       <Menu className="w-5 h-5" />
                     </button>
