@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://danidiazcasting.com/sitemap-index.xml
